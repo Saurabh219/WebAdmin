@@ -1,3 +1,4 @@
+import 'package:bidirectional_scroll_view/bidirectional_scroll_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
@@ -89,7 +90,7 @@ class _DashBoardState extends State<DashBoard> {
             Expanded(
               flex: 1,
               child: Container(
-                color:Color(0xff2A323C),
+                color:Color(0xffFD564F),
               ),
             ),
 
@@ -183,8 +184,7 @@ class _DashBoardState extends State<DashBoard> {
                 child: Container(
                     padding: EdgeInsets.all(16),
                     color: Colors.white,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    child: ListView(
                       children: [
                         Text("Goal Completion",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 18),),
 
@@ -289,9 +289,10 @@ class _DashBoardState extends State<DashBoard> {
             Card(
                 child: Container(
                     color: Colors.white,
-                    child: ListView(
-                      children: [
-                        DataTable(
+                    child: Center(
+                      child: BidirectionalScrollViewPlugin(
+                        child: DataTable(
+                          columnSpacing: 60,
                           columns: [
                             DataColumn(label: Text('Name')),
                             DataColumn(label: Text('Position')),
@@ -299,6 +300,7 @@ class _DashBoardState extends State<DashBoard> {
                             DataColumn(label: Text('Age')),
                             DataColumn(label: Text('Start date')),
                             DataColumn(label: Text('Salary')),
+                            DataColumn(label: Text('Action')),
                           ],
                           rows: [
                             DataRow(cells: [
@@ -308,6 +310,13 @@ class _DashBoardState extends State<DashBoard> {
                               DataCell(Text('61')),
                               DataCell(Text('2011/04/25')),
                               DataCell(Text('320,800')),
+                              DataCell(Row(
+                                children: [
+                                  IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                  IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                  IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                ],
+                              )),
                             ]),
                             DataRow(cells: [
                               DataCell(Text('Tiger Nixon')),
@@ -316,6 +325,13 @@ class _DashBoardState extends State<DashBoard> {
                               DataCell(Text('61')),
                               DataCell(Text('2011/04/25')),
                               DataCell(Text('320,800')),
+                              DataCell(Row(
+                                children: [
+                                  IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                  IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                  IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                ],
+                              )),
                             ]),
                             DataRow(cells: [
                               DataCell(Text('Tiger Nixon')),
@@ -324,6 +340,13 @@ class _DashBoardState extends State<DashBoard> {
                               DataCell(Text('61')),
                               DataCell(Text('2011/04/25')),
                               DataCell(Text('320,800')),
+                              DataCell(Row(
+                                children: [
+                                  IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                  IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                  IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                ],
+                              )),
                             ]),
                             DataRow(cells: [
                               DataCell(Text('Tiger Nixon')),
@@ -332,6 +355,13 @@ class _DashBoardState extends State<DashBoard> {
                               DataCell(Text('61')),
                               DataCell(Text('2011/04/25')),
                               DataCell(Text('320,800')),
+                              DataCell(Row(
+                                children: [
+                                  IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                  IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                  IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                ],
+                              )),
                             ]),
                             DataRow(cells: [
                               DataCell(Text('Tiger Nixon')),
@@ -340,6 +370,13 @@ class _DashBoardState extends State<DashBoard> {
                               DataCell(Text('61')),
                               DataCell(Text('2011/04/25')),
                               DataCell(Text('320,800')),
+                              DataCell(Row(
+                                children: [
+                                  IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                  IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                  IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                ],
+                              )),
                             ]),
                             DataRow(cells: [
                               DataCell(Text('Tiger Nixon')),
@@ -348,6 +385,13 @@ class _DashBoardState extends State<DashBoard> {
                               DataCell(Text('61')),
                               DataCell(Text('2011/04/25')),
                               DataCell(Text('320,800')),
+                              DataCell(Row(
+                                children: [
+                                  IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                  IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                  IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                ],
+                              )),
                             ]),
                             DataRow(cells: [
                               DataCell(Text('Tiger Nixon')),
@@ -356,6 +400,13 @@ class _DashBoardState extends State<DashBoard> {
                               DataCell(Text('61')),
                               DataCell(Text('2011/04/25')),
                               DataCell(Text('320,800')),
+                              DataCell(Row(
+                                children: [
+                                  IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                  IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                  IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                ],
+                              )),
                             ]),
                             DataRow(cells: [
                               DataCell(Text('Tiger Nixon')),
@@ -364,6 +415,13 @@ class _DashBoardState extends State<DashBoard> {
                               DataCell(Text('61')),
                               DataCell(Text('2011/04/25')),
                               DataCell(Text('320,800')),
+                              DataCell(Row(
+                                children: [
+                                  IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                  IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                  IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                ],
+                              )),
                             ]),
                             DataRow(cells: [
                               DataCell(Text('Tiger Nixon')),
@@ -372,10 +430,17 @@ class _DashBoardState extends State<DashBoard> {
                               DataCell(Text('61')),
                               DataCell(Text('2011/04/25')),
                               DataCell(Text('320,800')),
+                              DataCell(Row(
+                                children: [
+                                  IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                  IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                  IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                ],
+                              )),
                             ]),
                           ],
                         ),
-                      ],
+                      ),
                     )
                 )
             ),

@@ -77,3 +77,36 @@ Widget buildCard(String s1, String s2,String s3) {
       )
   );
 }
+
+
+
+class LoginButton extends StatelessWidget {
+  MediaQueryData queryData;
+  LoginButton({this.btntext,this.click});
+  Function click;
+  final btntext;
+  @override
+  Widget build(BuildContext context) {
+    queryData= MediaQuery.of(context);
+    return Container(
+      width: queryData.size.width/1,
+      padding: EdgeInsets.only(left: 8,right: 8),
+      decoration: BoxDecoration(
+          color: Color(0xffFD564F),
+          borderRadius:BorderRadius.only(
+            topRight: Radius.circular(0),
+            bottomRight: Radius.circular(10),
+            topLeft: Radius.circular(0),
+            bottomLeft: Radius.circular(10),
+          )
+      ),
+      child: FlatButton(
+        onPressed: click,
+        color: Colors.transparent,
+        child: Text(btntext,style: TextStyle(
+            color: Colors.white
+        ),),
+      ),
+    );
+  }
+}

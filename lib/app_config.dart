@@ -37,10 +37,10 @@ class App {
   }
 }
 
-class Colors {
+class Colores {
 //  Color _mainColor = Color(0xFFFF4E6A);
   Color _mainColor = Color(0xFF233558);
-  Color _mainDarkColor = Color(0xFFea5c44);
+  Color _mainDarkColor = Color(0xffFD564F);
   Color _secondColor = Color(0xFF344968);
   Color _secondDarkColor = Color(0xFFccccdd);
   Color _accentColor = Color(0xFF8C98A8);
