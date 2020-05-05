@@ -25,6 +25,33 @@ class _DashBoardState extends State<DashBoard> {
     const StaggeredTile.count(5, 3),
   ];
 
+  List<StaggeredTile> _staggeredTiles1000 = const <StaggeredTile>[
+    const StaggeredTile.count(2, 1),
+    const StaggeredTile.count(2, 1),
+    const StaggeredTile.count(2, 1),
+    const StaggeredTile.count(2, 1),
+
+    const StaggeredTile.count(8, 6),
+    const StaggeredTile.count(8, 6),
+
+    const StaggeredTile.count(3, 3),
+    const StaggeredTile.count(5, 3),
+  ];
+
+  List<StaggeredTile> _staggeredTiles750 = const <StaggeredTile>[
+    const StaggeredTile.count(4, 2),
+    const StaggeredTile.count(4, 2),
+    const StaggeredTile.count(4, 2),
+    const StaggeredTile.count(4, 2),
+
+    const StaggeredTile.count(8, 6),
+    const StaggeredTile.count(8, 6),
+
+    const StaggeredTile.count(3, 3),
+    const StaggeredTile.count(5, 3),
+  ];
+
+
   List<StaggeredTile> _staggeredTiles1 = const <StaggeredTile>[
     const StaggeredTile.count(8, 4),
     const StaggeredTile.count(8, 4),
@@ -82,374 +109,1143 @@ class _DashBoardState extends State<DashBoard> {
       ),
     );
 
-    return Stack(
-      alignment:Alignment.center,
-      children: [
-        Column(
-          children: <Widget>[
-            Expanded(
-              flex: 1,
-              child: Container(
-                color:Color(0xffFD564F),
-              ),
-            ),
-
-            Expanded(
-              flex: 2,
-              child: Container(
-                color: Colors.white,
-              ),
-            ),
-          ],
-        ),
-        StaggeredGridView.count(
-          padding: EdgeInsets.only(top: 100,left: 16,right: 16),
-          crossAxisCount: 8,
-          staggeredTiles:_queryData.size.width == 500 ? _staggeredTiles1 : _staggeredTiles,
-          children: [
-            //-------first row-----
-            buildCard("Total Subscription","8952","48% From Last 24 Hours"),
-            buildCard("Order Status","8952","48% From Last 24 Hours"),
-            buildCard("Unique Visitors","8952","48% From Last 24 Hours"),
-            buildCard("Monthly Earnings","8952","48% From Last 24 Hours"),
-
-            //-------second row-----
-            Card(
-                child: Container(
-                    color: Colors.white,
-                    child: Center(
-                      child: new Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(left: 24,right: 24,top: 16),
-                            child: new Text(
-                              'Revenue',style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18
-                            ),
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              buildContainer(Icons.arrow_upward,"5248","MarketPlace"),
-                              buildContainer(Icons.arrow_downward,"503","Last Week"),
-                              buildContainer(Icons.arrow_downward,"102","Last Month")
-                            ],
-                          ),
-                          chartWidget,
-                        ],
+    return Scaffold(
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints){
+          if(constraints.maxWidth > 1128){
+            return Stack(
+              alignment:Alignment.center,
+              children: [
+                Column(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        color:Color(0xffFD564F),
                       ),
-                    )
-                )
-            ),
-            Card(
-                child: Container(
-                    color: Colors.white,
-                    child: Center(
-                      child: new Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(left: 24,right: 24,top: 16),
-                            child: new Text(
-                              'Email Sent',style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18
-                            ),
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              buildContainer(Icons.arrow_upward,"3654","MarketPlace"),
-                              buildContainer(Icons.arrow_downward,"954","Last Week"),
-                              buildContainer(Icons.arrow_downward,"102","Last Month")
-                            ],
-                          ),
-                          chartWidget,
-                        ],
+                    ),
+
+                    Expanded(
+                      flex: 2,
+                      child: Container(
+                        color: Colors.white,
                       ),
-                    )
+                    ),
+                  ],
+                ),
+                StaggeredGridView.count(
+                  padding: EdgeInsets.only(top: 100,left: 16,right: 16),
+                  crossAxisCount: 8,
+                  staggeredTiles:_staggeredTiles,
+                  children: [
+                    //-------first row-----
+                    buildCard("Total Subscription","8952","48% From Last 24 Hours"),
+                    buildCard("Order Status","8952","48% From Last 24 Hours"),
+                    buildCard("Unique Visitors","8952","48% From Last 24 Hours"),
+                    buildCard("Monthly Earnings","8952","48% From Last 24 Hours"),
+
+                    //-------second row-----
+                    Card(
+                        elevation: 0.0,
+                        child: Container(
+                            color: Colors.white,
+                            child: Center(
+                              child: new Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 24,right: 24,top: 16),
+                                    child: new Text(
+                                      'Revenue',style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18
+                                    ),
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      buildContainer(Icons.arrow_upward,"5248","MarketPlace"),
+                                      buildContainer(Icons.arrow_downward,"503","Last Week"),
+                                      buildContainer(Icons.arrow_downward,"102","Last Month")
+                                    ],
+                                  ),
+                                  chartWidget,
+                                ],
+                              ),
+                            )
+                        )
+                    ),
+                    Card(
+                        elevation: 0.0,
+                        child: Container(
+                            color: Colors.white,
+                            child: Center(
+                              child: new Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 24,right: 24,top: 16),
+                                    child: new Text(
+                                      'Email Sent',style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18
+                                    ),
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      buildContainer(Icons.arrow_upward,"3654","MarketPlace"),
+                                      buildContainer(Icons.arrow_downward,"954","Last Week"),
+                                      buildContainer(Icons.arrow_downward,"102","Last Month")
+                                    ],
+                                  ),
+                                  chartWidget,
+                                ],
+                              ),
+                            )
+                        )
+                    ),
+
+                    //-------third row-----
+                    Card(
+                        elevation: 0.0,
+                        child: Container(
+                            padding: EdgeInsets.all(16),
+                            color: Colors.white,
+                            child: ListView(
+                              children: [
+                                Text("Goal Completion",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 18),),
+
+                                SizedBox(height: 30,),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 4),
+                                  child: Text("Add Product to cart",style: TextStyle(color:Colors.black),),
+                                ),
+                                SizedBox(height: 5,),
+                                LinearPercentIndicator(
+                                  width: _queryData.size.width == 500 ? config.App(context).appWidth(70) : config.App(context).appWidth(25),
+                                  lineHeight: 14.0,
+                                  percent: 0.5,
+                                  trailing:Text(
+                                    "50.0%",
+                                    style: new TextStyle(fontSize: 12.0,color: Colors.green,fontWeight: FontWeight.bold),
+                                  ),
+                                  linearStrokeCap: LinearStrokeCap.roundAll,
+                                  backgroundColor: Colors.lightGreen,
+                                  progressColor: Colors.green,
+                                ),
+
+                                SizedBox(height: 15,),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 4),
+                                  child: Text("Visit Premium plan",style: TextStyle(color:Colors.black),),
+                                ),
+                                SizedBox(height: 5,),
+                                LinearPercentIndicator(
+                                  width:_queryData.size.width == 500 ? config.App(context).appWidth(70) : config.App(context).appWidth(25),
+                                  lineHeight: 14.0,
+                                  percent: 0.3,
+                                  trailing:Text(
+                                    "30.0%",
+                                    style: new TextStyle(fontSize: 12.0,color: Colors.green,fontWeight: FontWeight.bold),
+                                  ),
+                                  linearStrokeCap: LinearStrokeCap.roundAll,
+                                  backgroundColor: Colors.lightGreen,
+                                  progressColor: Colors.green,
+                                ),
+
+                                SizedBox(height: 15,),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 4),
+                                  child: Text("Complete Purchases",style: TextStyle(color:Colors.black),),
+                                ),
+                                SizedBox(height: 5,),
+                                LinearPercentIndicator(
+                                  width:_queryData.size.width == 500 ? config.App(context).appWidth(70) : config.App(context).appWidth(25),
+                                  lineHeight: 14.0,
+                                  percent: 0.7,
+                                  trailing:Text(
+                                    "70.0%",
+                                    style: new TextStyle(fontSize: 12.0,color: Colors.green,fontWeight: FontWeight.bold),
+                                  ),
+                                  linearStrokeCap: LinearStrokeCap.roundAll,
+                                  backgroundColor: Colors.lightGreen,
+                                  progressColor: Colors.green,
+                                ),
+
+                                SizedBox(height: 15,),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 4),
+                                  child: Text("Send Inquiries",style: TextStyle(color:Colors.black),),
+                                ),
+                                SizedBox(height: 5,),
+                                LinearPercentIndicator(
+                                  width: _queryData.size.width == 500 ? config.App(context).appWidth(70) : config.App(context).appWidth(25),
+                                  lineHeight: 14.0,
+                                  percent: 0.5,
+                                  trailing:Text(
+                                    "50.0%",
+                                    style: new TextStyle(fontSize: 12.0,color: Colors.green,fontWeight: FontWeight.bold),
+                                  ),
+                                  linearStrokeCap: LinearStrokeCap.roundAll,
+                                  backgroundColor: Colors.lightGreen,
+                                  progressColor: Colors.green,
+                                ),
+
+                                SizedBox(height: 15,),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 4),
+                                  child: Text("Send Inquiries",style: TextStyle(color:Colors.black),),
+                                ),
+                                SizedBox(height: 5,),
+                                LinearPercentIndicator(
+                                  width: _queryData.size.width == 500 ? config.App(context).appWidth(70) : config.App(context).appWidth(25),
+                                  lineHeight: 14.0,
+                                  percent: 0.5,
+                                  trailing:Text(
+                                    "50.0%",
+                                    style: new TextStyle(fontSize: 12.0,color: Colors.green,fontWeight: FontWeight.bold),
+                                  ),
+                                  linearStrokeCap: LinearStrokeCap.roundAll,
+                                  backgroundColor: Colors.lightGreen,
+                                  progressColor: Colors.green,
+                                ),
+                              ],
+                            )
+                        )
+                    ),
+                    Card(
+                        elevation: 0.0,
+                        child: Container(
+                            color: Colors.white,
+                            child: ListView(
+                              children: [
+                                DataTable(
+
+                                  columns: [
+                                    DataColumn(label: Text('Name')),
+                                    DataColumn(label: Text('Position')),
+                                    DataColumn(label: Text('Office')),
+                                    DataColumn(label: Text('Age')),
+                                    DataColumn(label: Text('Start date')),
+                                    DataColumn(label: Text('Salary')),
+                                    DataColumn(label: Text('Action')),
+                                  ],
+                                  rows: [
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                  ],
+                                ),
+                              ],
+                            )
+                        )
+                    ),
+
+                  ],
+                  mainAxisSpacing: 4.0,
+                  crossAxisSpacing: 4.0,
                 )
-            ),
+              ],
+            );
+          } else if(constraints.minWidth < 1128){
+            return Stack(
+              alignment:Alignment.center,
+              children: [
+                Column(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        color:Color(0xffFD564F),
+                      ),
+                    ),
 
-            //-------third row-----
-            Card(
-                child: Container(
-                    padding: EdgeInsets.all(16),
-                    color: Colors.white,
-                    child: ListView(
-                      children: [
-                        Text("Goal Completion",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 18),),
+                    Expanded(
+                      flex: 2,
+                      child: Container(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+                StaggeredGridView.count(
+                  padding: EdgeInsets.only(top: 100,left: 16,right: 16),
+                  crossAxisCount: 8,
+                  staggeredTiles:_staggeredTiles750,
+                  children: [
+                    //-------first row-----
+                    buildCard("Total Subscription","8952","48% From Last 24 Hours"),
+                    buildCard("Order Status","8952","48% From Last 24 Hours"),
+                    buildCard("Unique Visitors","8952","48% From Last 24 Hours"),
+                    buildCard("Monthly Earnings","8952","48% From Last 24 Hours"),
 
-                        SizedBox(height: 30,),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 4),
-                          child: Text("Add Product to cart",style: TextStyle(color:Colors.black),),
-                        ),
-                        SizedBox(height: 5,),
-                        LinearPercentIndicator(
-                          width: _queryData.size.width == 500 ? config.App(context).appWidth(70) : config.App(context).appWidth(25),
-                          lineHeight: 14.0,
-                          percent: 0.5,
-                          trailing:Text(
-                            "50.0%",
-                            style: new TextStyle(fontSize: 12.0,color: Colors.green,fontWeight: FontWeight.bold),
-                          ),
-                          linearStrokeCap: LinearStrokeCap.roundAll,
-                          backgroundColor: Colors.lightGreen,
-                          progressColor: Colors.green,
-                        ),
-
-                        SizedBox(height: 15,),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 4),
-                          child: Text("Visit Premium plan",style: TextStyle(color:Colors.black),),
-                        ),
-                        SizedBox(height: 5,),
-                        LinearPercentIndicator(
-                          width:_queryData.size.width == 500 ? config.App(context).appWidth(70) : config.App(context).appWidth(25),
-                          lineHeight: 14.0,
-                          percent: 0.3,
-                          trailing:Text(
-                            "30.0%",
-                            style: new TextStyle(fontSize: 12.0,color: Colors.green,fontWeight: FontWeight.bold),
-                          ),
-                          linearStrokeCap: LinearStrokeCap.roundAll,
-                          backgroundColor: Colors.lightGreen,
-                          progressColor: Colors.green,
-                        ),
-
-                        SizedBox(height: 15,),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 4),
-                          child: Text("Complete Purchases",style: TextStyle(color:Colors.black),),
-                        ),
-                        SizedBox(height: 5,),
-                        LinearPercentIndicator(
-                          width:_queryData.size.width == 500 ? config.App(context).appWidth(70) : config.App(context).appWidth(25),
-                          lineHeight: 14.0,
-                          percent: 0.7,
-                          trailing:Text(
-                            "70.0%",
-                            style: new TextStyle(fontSize: 12.0,color: Colors.green,fontWeight: FontWeight.bold),
-                          ),
-                          linearStrokeCap: LinearStrokeCap.roundAll,
-                          backgroundColor: Colors.lightGreen,
-                          progressColor: Colors.green,
-                        ),
-
-                        SizedBox(height: 15,),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 4),
-                          child: Text("Send Inquiries",style: TextStyle(color:Colors.black),),
-                        ),
-                        SizedBox(height: 5,),
-                        LinearPercentIndicator(
-                          width: _queryData.size.width == 500 ? config.App(context).appWidth(70) : config.App(context).appWidth(25),
-                          lineHeight: 14.0,
-                          percent: 0.5,
-                          trailing:Text(
-                            "50.0%",
-                            style: new TextStyle(fontSize: 12.0,color: Colors.green,fontWeight: FontWeight.bold),
-                          ),
-                          linearStrokeCap: LinearStrokeCap.roundAll,
-                          backgroundColor: Colors.lightGreen,
-                          progressColor: Colors.green,
-                        ),
-
-                        SizedBox(height: 15,),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 4),
-                          child: Text("Send Inquiries",style: TextStyle(color:Colors.black),),
-                        ),
-                        SizedBox(height: 5,),
-                        LinearPercentIndicator(
-                          width: _queryData.size.width == 500 ? config.App(context).appWidth(70) : config.App(context).appWidth(25),
-                          lineHeight: 14.0,
-                          percent: 0.5,
-                          trailing:Text(
-                            "50.0%",
-                            style: new TextStyle(fontSize: 12.0,color: Colors.green,fontWeight: FontWeight.bold),
-                          ),
-                          linearStrokeCap: LinearStrokeCap.roundAll,
-                          backgroundColor: Colors.lightGreen,
-                          progressColor: Colors.green,
-                        ),
-                      ],
-                    )
-                )
-            ),
-            Card(
-                child: Container(
-                    color: Colors.white,
-                    child: Center(
-                      child: BidirectionalScrollViewPlugin(
-                        child: DataTable(
-                          columnSpacing: 60,
-                          columns: [
-                            DataColumn(label: Text('Name')),
-                            DataColumn(label: Text('Position')),
-                            DataColumn(label: Text('Office')),
-                            DataColumn(label: Text('Age')),
-                            DataColumn(label: Text('Start date')),
-                            DataColumn(label: Text('Salary')),
-                            DataColumn(label: Text('Action')),
+                    //-------second row-----
+                    Card(
+                        elevation: 0.0,
+                        child: ListView(
+                          children: [
+                            Container(
+                                color: Colors.white,
+                                child: Center(
+                                  child: new Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 24,right: 24,top: 16),
+                                        child: new Text(
+                                          'Revenue',style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 18
+                                        ),
+                                        ),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          buildContainer(Icons.arrow_upward,"5248","MarketPlace"),
+                                          buildContainer(Icons.arrow_downward,"503","Last Week"),
+                                          buildContainer(Icons.arrow_downward,"102","Last Month")
+                                        ],
+                                      ),
+                                      chartWidget,
+                                    ],
+                                  ),
+                                )
+                            ),
                           ],
-                          rows: [
-                            DataRow(cells: [
-                              DataCell(Text('Tiger Nixon')),
-                              DataCell(Text('System Architect')),
-                              DataCell(Text('Edinburgh')),
-                              DataCell(Text('61')),
-                              DataCell(Text('2011/04/25')),
-                              DataCell(Text('320,800')),
-                              DataCell(Row(
-                                children: [
-                                  IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
-                                  IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
-                                  IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
-                                ],
-                              )),
-                            ]),
-                            DataRow(cells: [
-                              DataCell(Text('Tiger Nixon')),
-                              DataCell(Text('System Architect')),
-                              DataCell(Text('Edinburgh')),
-                              DataCell(Text('61')),
-                              DataCell(Text('2011/04/25')),
-                              DataCell(Text('320,800')),
-                              DataCell(Row(
-                                children: [
-                                  IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
-                                  IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
-                                  IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
-                                ],
-                              )),
-                            ]),
-                            DataRow(cells: [
-                              DataCell(Text('Tiger Nixon')),
-                              DataCell(Text('System Architect')),
-                              DataCell(Text('Edinburgh')),
-                              DataCell(Text('61')),
-                              DataCell(Text('2011/04/25')),
-                              DataCell(Text('320,800')),
-                              DataCell(Row(
-                                children: [
-                                  IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
-                                  IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
-                                  IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
-                                ],
-                              )),
-                            ]),
-                            DataRow(cells: [
-                              DataCell(Text('Tiger Nixon')),
-                              DataCell(Text('System Architect')),
-                              DataCell(Text('Edinburgh')),
-                              DataCell(Text('61')),
-                              DataCell(Text('2011/04/25')),
-                              DataCell(Text('320,800')),
-                              DataCell(Row(
-                                children: [
-                                  IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
-                                  IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
-                                  IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
-                                ],
-                              )),
-                            ]),
-                            DataRow(cells: [
-                              DataCell(Text('Tiger Nixon')),
-                              DataCell(Text('System Architect')),
-                              DataCell(Text('Edinburgh')),
-                              DataCell(Text('61')),
-                              DataCell(Text('2011/04/25')),
-                              DataCell(Text('320,800')),
-                              DataCell(Row(
-                                children: [
-                                  IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
-                                  IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
-                                  IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
-                                ],
-                              )),
-                            ]),
-                            DataRow(cells: [
-                              DataCell(Text('Tiger Nixon')),
-                              DataCell(Text('System Architect')),
-                              DataCell(Text('Edinburgh')),
-                              DataCell(Text('61')),
-                              DataCell(Text('2011/04/25')),
-                              DataCell(Text('320,800')),
-                              DataCell(Row(
-                                children: [
-                                  IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
-                                  IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
-                                  IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
-                                ],
-                              )),
-                            ]),
-                            DataRow(cells: [
-                              DataCell(Text('Tiger Nixon')),
-                              DataCell(Text('System Architect')),
-                              DataCell(Text('Edinburgh')),
-                              DataCell(Text('61')),
-                              DataCell(Text('2011/04/25')),
-                              DataCell(Text('320,800')),
-                              DataCell(Row(
-                                children: [
-                                  IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
-                                  IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
-                                  IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
-                                ],
-                              )),
-                            ]),
-                            DataRow(cells: [
-                              DataCell(Text('Tiger Nixon')),
-                              DataCell(Text('System Architect')),
-                              DataCell(Text('Edinburgh')),
-                              DataCell(Text('61')),
-                              DataCell(Text('2011/04/25')),
-                              DataCell(Text('320,800')),
-                              DataCell(Row(
-                                children: [
-                                  IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
-                                  IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
-                                  IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
-                                ],
-                              )),
-                            ]),
-                            DataRow(cells: [
-                              DataCell(Text('Tiger Nixon')),
-                              DataCell(Text('System Architect')),
-                              DataCell(Text('Edinburgh')),
-                              DataCell(Text('61')),
-                              DataCell(Text('2011/04/25')),
-                              DataCell(Text('320,800')),
-                              DataCell(Row(
-                                children: [
-                                  IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
-                                  IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
-                                  IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
-                                ],
-                              )),
-                            ]),
+                        )
+                    ),
+                    Card(
+                        elevation: 0.0,
+                        child: ListView(
+                          children: [
+                            Container(
+                                color: Colors.white,
+                                child: Center(
+                                  child: new Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 24,right: 24,top: 16),
+                                        child: new Text(
+                                          'Email Sent',style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 18
+                                        ),
+                                        ),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          buildContainer(Icons.arrow_upward,"3654","MarketPlace"),
+                                          buildContainer(Icons.arrow_downward,"954","Last Week"),
+                                          buildContainer(Icons.arrow_downward,"102","Last Month")
+                                        ],
+                                      ),
+                                      chartWidget,
+                                    ],
+                                  ),
+                                )
+                            ),
                           ],
-                        ),
-                      ),
-                    )
-                )
-            ),
+                        )
+                    ),
 
-          ],
-          mainAxisSpacing: 4.0,
-          crossAxisSpacing: 4.0,
-        )
-      ],
+                    //-------third row-----
+                    Card(
+                        elevation: 0.0,
+                        child: Container(
+                            padding: EdgeInsets.all(16),
+                            color: Colors.white,
+                            child: ListView(
+                              children: [
+                                Text("Goal Completion",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 18),),
+
+                                SizedBox(height: 30,),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 4),
+                                  child: Text("Add Product to cart",style: TextStyle(color:Colors.black),),
+                                ),
+                                SizedBox(height: 5,),
+                                LinearPercentIndicator(
+                                  width: _queryData.size.width == 500 ? config.App(context).appWidth(70) : config.App(context).appWidth(25),
+                                  lineHeight: 14.0,
+                                  percent: 0.5,
+                                  trailing:Text(
+                                    "50.0%",
+                                    style: new TextStyle(fontSize: 12.0,color: Colors.green,fontWeight: FontWeight.bold),
+                                  ),
+                                  linearStrokeCap: LinearStrokeCap.roundAll,
+                                  backgroundColor: Colors.lightGreen,
+                                  progressColor: Colors.green,
+                                ),
+
+                                SizedBox(height: 15,),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 4),
+                                  child: Text("Visit Premium plan",style: TextStyle(color:Colors.black),),
+                                ),
+                                SizedBox(height: 5,),
+                                LinearPercentIndicator(
+                                  width:_queryData.size.width == 500 ? config.App(context).appWidth(70) : config.App(context).appWidth(25),
+                                  lineHeight: 14.0,
+                                  percent: 0.3,
+                                  trailing:Text(
+                                    "30.0%",
+                                    style: new TextStyle(fontSize: 12.0,color: Colors.green,fontWeight: FontWeight.bold),
+                                  ),
+                                  linearStrokeCap: LinearStrokeCap.roundAll,
+                                  backgroundColor: Colors.lightGreen,
+                                  progressColor: Colors.green,
+                                ),
+
+                                SizedBox(height: 15,),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 4),
+                                  child: Text("Complete Purchases",style: TextStyle(color:Colors.black),),
+                                ),
+                                SizedBox(height: 5,),
+                                LinearPercentIndicator(
+                                  width:_queryData.size.width == 500 ? config.App(context).appWidth(70) : config.App(context).appWidth(25),
+                                  lineHeight: 14.0,
+                                  percent: 0.7,
+                                  trailing:Text(
+                                    "70.0%",
+                                    style: new TextStyle(fontSize: 12.0,color: Colors.green,fontWeight: FontWeight.bold),
+                                  ),
+                                  linearStrokeCap: LinearStrokeCap.roundAll,
+                                  backgroundColor: Colors.lightGreen,
+                                  progressColor: Colors.green,
+                                ),
+
+                                SizedBox(height: 15,),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 4),
+                                  child: Text("Send Inquiries",style: TextStyle(color:Colors.black),),
+                                ),
+                                SizedBox(height: 5,),
+                                LinearPercentIndicator(
+                                  width: _queryData.size.width == 500 ? config.App(context).appWidth(70) : config.App(context).appWidth(25),
+                                  lineHeight: 14.0,
+                                  percent: 0.5,
+                                  trailing:Text(
+                                    "50.0%",
+                                    style: new TextStyle(fontSize: 12.0,color: Colors.green,fontWeight: FontWeight.bold),
+                                  ),
+                                  linearStrokeCap: LinearStrokeCap.roundAll,
+                                  backgroundColor: Colors.lightGreen,
+                                  progressColor: Colors.green,
+                                ),
+
+                                SizedBox(height: 15,),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 4),
+                                  child: Text("Send Inquiries",style: TextStyle(color:Colors.black),),
+                                ),
+                                SizedBox(height: 5,),
+                                LinearPercentIndicator(
+                                  width: _queryData.size.width == 500 ? config.App(context).appWidth(70) : config.App(context).appWidth(25),
+                                  lineHeight: 14.0,
+                                  percent: 0.5,
+                                  trailing:Text(
+                                    "50.0%",
+                                    style: new TextStyle(fontSize: 12.0,color: Colors.green,fontWeight: FontWeight.bold),
+                                  ),
+                                  linearStrokeCap: LinearStrokeCap.roundAll,
+                                  backgroundColor: Colors.lightGreen,
+                                  progressColor: Colors.green,
+                                ),
+                              ],
+                            )
+                        )
+                    ),
+                    Card(
+                        elevation: 0.0,
+                        child: Container(
+                            color: Colors.white,
+                            child: ListView(
+                              children: [
+                                DataTable(
+
+                                  columns: [
+                                    DataColumn(label: Text('Name')),
+                                    DataColumn(label: Text('Position')),
+                                    DataColumn(label: Text('Office')),
+                                    DataColumn(label: Text('Age')),
+                                    DataColumn(label: Text('Start date')),
+                                    DataColumn(label: Text('Salary')),
+                                    DataColumn(label: Text('Action')),
+                                  ],
+                                  rows: [
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                  ],
+                                ),
+                              ],
+                            )
+                        )
+                    ),
+
+                  ],
+                  mainAxisSpacing: 4.0,
+                  crossAxisSpacing: 4.0,
+                )
+              ],
+            );
+          } else{
+            return Stack(
+              alignment:Alignment.center,
+              children: [
+                Column(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        color:Color(0xffFD564F),
+                      ),
+                    ),
+
+                    Expanded(
+                      flex: 2,
+                      child: Container(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+                StaggeredGridView.count(
+                  padding: EdgeInsets.only(top: 100,left: 16,right: 16),
+                  crossAxisCount: 8,
+                  staggeredTiles:_staggeredTiles1000,
+                  children: [
+                    //-------first row-----
+                    buildCard("Total Subscription","8952","48% From Last 24 Hours"),
+                    buildCard("Order Status","8952","48% From Last 24 Hours"),
+                    buildCard("Unique Visitors","8952","48% From Last 24 Hours"),
+                    buildCard("Monthly Earnings","8952","48% From Last 24 Hours"),
+
+                    //-------second row-----
+                    Card(
+                        elevation: 0.0,
+                        child: Container(
+                            color: Colors.white,
+                            child: Center(
+                              child: new Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 24,right: 24,top: 16),
+                                    child: new Text(
+                                      'Revenue',style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18
+                                    ),
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      buildContainer(Icons.arrow_upward,"5248","MarketPlace"),
+                                      buildContainer(Icons.arrow_downward,"503","Last Week"),
+                                      buildContainer(Icons.arrow_downward,"102","Last Month")
+                                    ],
+                                  ),
+                                  chartWidget,
+                                ],
+                              ),
+                            )
+                        )
+                    ),
+                    Card(
+                        elevation: 0.0,
+                        child: Container(
+                            color: Colors.white,
+                            child: Center(
+                              child: new Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 24,right: 24,top: 16),
+                                    child: new Text(
+                                      'Email Sent',style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18
+                                    ),
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      buildContainer(Icons.arrow_upward,"3654","MarketPlace"),
+                                      buildContainer(Icons.arrow_downward,"954","Last Week"),
+                                      buildContainer(Icons.arrow_downward,"102","Last Month")
+                                    ],
+                                  ),
+                                  chartWidget,
+                                ],
+                              ),
+                            )
+                        )
+                    ),
+
+                    //-------third row-----
+                    Card(
+                        elevation: 0.0,
+                        child: Container(
+                            padding: EdgeInsets.all(16),
+                            color: Colors.white,
+                            child: ListView(
+                              children: [
+                                Text("Goal Completion",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 18),),
+
+                                SizedBox(height: 30,),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 4),
+                                  child: Text("Add Product to cart",style: TextStyle(color:Colors.black),),
+                                ),
+                                SizedBox(height: 5,),
+                                LinearPercentIndicator(
+                                  width: _queryData.size.width == 500 ? config.App(context).appWidth(70) : config.App(context).appWidth(25),
+                                  lineHeight: 14.0,
+                                  percent: 0.5,
+                                  trailing:Text(
+                                    "50.0%",
+                                    style: new TextStyle(fontSize: 12.0,color: Colors.green,fontWeight: FontWeight.bold),
+                                  ),
+                                  linearStrokeCap: LinearStrokeCap.roundAll,
+                                  backgroundColor: Colors.lightGreen,
+                                  progressColor: Colors.green,
+                                ),
+
+                                SizedBox(height: 15,),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 4),
+                                  child: Text("Visit Premium plan",style: TextStyle(color:Colors.black),),
+                                ),
+                                SizedBox(height: 5,),
+                                LinearPercentIndicator(
+                                  width:_queryData.size.width == 500 ? config.App(context).appWidth(70) : config.App(context).appWidth(25),
+                                  lineHeight: 14.0,
+                                  percent: 0.3,
+                                  trailing:Text(
+                                    "30.0%",
+                                    style: new TextStyle(fontSize: 12.0,color: Colors.green,fontWeight: FontWeight.bold),
+                                  ),
+                                  linearStrokeCap: LinearStrokeCap.roundAll,
+                                  backgroundColor: Colors.lightGreen,
+                                  progressColor: Colors.green,
+                                ),
+
+                                SizedBox(height: 15,),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 4),
+                                  child: Text("Complete Purchases",style: TextStyle(color:Colors.black),),
+                                ),
+                                SizedBox(height: 5,),
+                                LinearPercentIndicator(
+                                  width:_queryData.size.width == 500 ? config.App(context).appWidth(70) : config.App(context).appWidth(25),
+                                  lineHeight: 14.0,
+                                  percent: 0.7,
+                                  trailing:Text(
+                                    "70.0%",
+                                    style: new TextStyle(fontSize: 12.0,color: Colors.green,fontWeight: FontWeight.bold),
+                                  ),
+                                  linearStrokeCap: LinearStrokeCap.roundAll,
+                                  backgroundColor: Colors.lightGreen,
+                                  progressColor: Colors.green,
+                                ),
+
+                                SizedBox(height: 15,),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 4),
+                                  child: Text("Send Inquiries",style: TextStyle(color:Colors.black),),
+                                ),
+                                SizedBox(height: 5,),
+                                LinearPercentIndicator(
+                                  width: _queryData.size.width == 500 ? config.App(context).appWidth(70) : config.App(context).appWidth(25),
+                                  lineHeight: 14.0,
+                                  percent: 0.5,
+                                  trailing:Text(
+                                    "50.0%",
+                                    style: new TextStyle(fontSize: 12.0,color: Colors.green,fontWeight: FontWeight.bold),
+                                  ),
+                                  linearStrokeCap: LinearStrokeCap.roundAll,
+                                  backgroundColor: Colors.lightGreen,
+                                  progressColor: Colors.green,
+                                ),
+
+                                SizedBox(height: 15,),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 4),
+                                  child: Text("Send Inquiries",style: TextStyle(color:Colors.black),),
+                                ),
+                                SizedBox(height: 5,),
+                                LinearPercentIndicator(
+                                  width: _queryData.size.width == 500 ? config.App(context).appWidth(70) : config.App(context).appWidth(25),
+                                  lineHeight: 14.0,
+                                  percent: 0.5,
+                                  trailing:Text(
+                                    "50.0%",
+                                    style: new TextStyle(fontSize: 12.0,color: Colors.green,fontWeight: FontWeight.bold),
+                                  ),
+                                  linearStrokeCap: LinearStrokeCap.roundAll,
+                                  backgroundColor: Colors.lightGreen,
+                                  progressColor: Colors.green,
+                                ),
+                              ],
+                            )
+                        )
+                    ),
+                    Card(
+                        elevation: 0.0,
+                        child: Container(
+                            color: Colors.white,
+                            child: ListView(
+                              children: [
+                                DataTable(
+
+                                  columns: [
+                                    DataColumn(label: Text('Name')),
+                                    DataColumn(label: Text('Position')),
+                                    DataColumn(label: Text('Office')),
+                                    DataColumn(label: Text('Age')),
+                                    DataColumn(label: Text('Start date')),
+                                    DataColumn(label: Text('Salary')),
+                                    DataColumn(label: Text('Action')),
+                                  ],
+                                  rows: [
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                    DataRow(cells: [
+                                      DataCell(Text('Tiger Nixon')),
+                                      DataCell(Text('System Architect')),
+                                      DataCell(Text('Edinburgh')),
+                                      DataCell(Text('61')),
+                                      DataCell(Text('2011/04/25')),
+                                      DataCell(Text('320,800')),
+                                      DataCell(Row(
+                                        children: [
+                                          IconButton(icon: Icon(Icons.edit,color: Colors.green,)),
+                                          IconButton(icon: Icon(Icons.delete,color: Colors.red,)),
+                                          IconButton(icon: Icon(Icons.remove_red_eye,color: Colors.blue,)),
+                                        ],
+                                      )),
+                                    ]),
+                                  ],
+                                ),
+                              ],
+                            )
+                        )
+                    ),
+
+                  ],
+                  mainAxisSpacing: 4.0,
+                  crossAxisSpacing: 4.0,
+                )
+              ],
+            );
+          }
+        },
+
+      ),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:webapp/app_config.dart';
 import 'package:webapp/screens/dashboard.dart';
 import 'package:webapp/screens/login_screen.dart';
 
@@ -88,6 +89,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
+           backgroundColor: Colores().mainDarkColor(1),
           elevation: 0.0,
           title: Text(title),
           actions: [

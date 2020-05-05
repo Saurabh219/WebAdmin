@@ -52,6 +52,8 @@ Widget buildContainer(IconData icons,String s1,String s2) {
 
 Widget buildCard(String s1, String s2,String s3) {
   return Card(
+    elevation: 10.0,
+      shadowColor: Colors.grey,
       child: Container(
           color: Colors.white,
           child: Center(

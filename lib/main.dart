@@ -17,7 +17,7 @@ class WebApp extends StatelessWidget {
           color: Colores().mainDarkColor(1),
         )
       ),
-      home: HomePage(),
+      home: LoginPage(),
     );
   }
 }
