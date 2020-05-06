@@ -47,8 +47,8 @@ class _DashBoardState extends State<DashBoard> {
     const StaggeredTile.count(8, 6),
     const StaggeredTile.count(8, 6),
 
-    const StaggeredTile.count(3, 3),
-    const StaggeredTile.count(5, 3),
+    const StaggeredTile.count(8, 8),
+    const StaggeredTile.count(8, 8),
   ];
 
 
@@ -611,7 +611,7 @@ class _DashBoardState extends State<DashBoard> {
                                 ),
                                 SizedBox(height: 5,),
                                 LinearPercentIndicator(
-                                  width: _queryData.size.width == 500 ? config.App(context).appWidth(70) : config.App(context).appWidth(25),
+                                  width:  config.App(context).appWidth(70),
                                   lineHeight: 14.0,
                                   percent: 0.5,
                                   trailing:Text(
@@ -630,7 +630,7 @@ class _DashBoardState extends State<DashBoard> {
                                 ),
                                 SizedBox(height: 5,),
                                 LinearPercentIndicator(
-                                  width:_queryData.size.width == 500 ? config.App(context).appWidth(70) : config.App(context).appWidth(25),
+                                  width: config.App(context).appWidth(70),
                                   lineHeight: 14.0,
                                   percent: 0.3,
                                   trailing:Text(
@@ -649,7 +649,7 @@ class _DashBoardState extends State<DashBoard> {
                                 ),
                                 SizedBox(height: 5,),
                                 LinearPercentIndicator(
-                                  width:_queryData.size.width == 500 ? config.App(context).appWidth(70) : config.App(context).appWidth(25),
+                                  width: config.App(context).appWidth(70),
                                   lineHeight: 14.0,
                                   percent: 0.7,
                                   trailing:Text(
@@ -668,7 +668,7 @@ class _DashBoardState extends State<DashBoard> {
                                 ),
                                 SizedBox(height: 5,),
                                 LinearPercentIndicator(
-                                  width: _queryData.size.width == 500 ? config.App(context).appWidth(70) : config.App(context).appWidth(25),
+                                  width: config.App(context).appWidth(70),
                                   lineHeight: 14.0,
                                   percent: 0.5,
                                   trailing:Text(
@@ -687,7 +687,7 @@ class _DashBoardState extends State<DashBoard> {
                                 ),
                                 SizedBox(height: 5,),
                                 LinearPercentIndicator(
-                                  width: _queryData.size.width == 500 ? config.App(context).appWidth(70) : config.App(context).appWidth(25),
+                                  width: config.App(context).appWidth(70),
                                   lineHeight: 14.0,
                                   percent: 0.5,
                                   trailing:Text(

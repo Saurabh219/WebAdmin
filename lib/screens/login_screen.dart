@@ -18,19 +18,14 @@ class _LoginPageState extends State<LoginPage> {
         builder: (context, constratints){
            return  SafeArea(
                child:  Center(
-                 child: Column(
-                   crossAxisAlignment: CrossAxisAlignment.center,
-                   mainAxisAlignment: MainAxisAlignment.center,
+                 child: ListView(
                    children: [
+
                      Container(
-                       width: App(context).appWidth(21),
-                       child: Image.asset("images/login.png"),
-                     ),
-                     Container(
-                       margin: EdgeInsets.only(top: 30),
+                       margin: EdgeInsets.symmetric(horizontal: App(context).appWidth(20)),
+                       padding: EdgeInsets.symmetric(vertical: App(context).appWidth(20)),
                        color: Colors.white,
-                       width: App(context).appWidth(30),
-                       height: App(context).appHeight(45),
+
                        child: Center(
                          child: Column(
                            crossAxisAlignment: CrossAxisAlignment.start,
